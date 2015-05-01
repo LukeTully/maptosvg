@@ -4,7 +4,7 @@
 		"noAreas": "No areas were found",
 		"noMap": "No map was found for this image",
 		"noImage": "The image with the given ID does not exist"
-	}, mapElCache = [];
+	}, mapElCache                               = [];
 	var SVGM = function ( imageId ) {
 
 		if (!imageId) {
@@ -43,7 +43,6 @@
 	// BEGIN TESTING
 
 	SVGM.prototype.getAttributeValue = getAttributeValue;
-	SVGM.prototype.shapeFromArea = shapeFromArea;
 	SVGM.prototype.getMapFromImage = getMapFromImage;
 	SVGM.prototype.determineShape = determineShape;
 	SVGM.prototype.getSVG = getSVG;
@@ -127,7 +126,7 @@
 		newSvg.classList.add("mapped-svg"); // Give the new SVG Element a class
 		var newShape;
 
-		for (var i = 0; i < elList.length; i++) {
+		for (var i = elList.length - 1; i > 0; i--) {
 
 			switch (elList[i].type) {
 				case "rect":
@@ -137,12 +136,18 @@
 					newShape.setAttributeNS(null, "x", elList[i].x);
 					newShape.setAttributeNS(null, "y", elList[i].y);
 					newShape.classList.add("map-area-rect");
+				case "poly":
+					newShape = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+					newShape.setAttributeNS(null, "points", elList[i].points);
 
 			}
 			svgAnchor = createSVGAnchor(elList[i]);
 			if (svgAnchor) {
 				svgAnchor.appendChild(newShape);
 				newSvg.appendChild(svgAnchor);
+			}
+			else {
+				newSvg.appendChild(newShape);
 			}
 
 		}
@@ -157,6 +162,34 @@
 			return anchor;
 		}
 		return false;
+	}
+
+	function parsePolyCoords ( el ) {
+		// All this does is fix the spacing in the coords list if it is incorrect
+		var points, pointsList, pointString, shape = {};
+		points = el.attributes.getNamedItem("coords").value;
+
+		if (points.length < 1) {
+			return "Coordinate count is too short";
+		}
+		if (points.match(/[\ ]/) !== null) {
+			return points;
+		}
+
+		pointsList = points.split(",");
+		pointString = pointsList[0];
+		for (var i = 1; i < pointsList.length; i++) {
+			i % 2 === 0 ? pointString += " " : pointString += ",";
+			pointString += pointsList[i];
+		}
+
+		shape.points = pointString;
+		shape.type = "poly";
+		var href = parseHref(el);
+		if (href) {
+			shape.href = href;
+		}
+		return shape;
 	}
 
 	function parseRect ( el ) {
@@ -182,14 +215,7 @@
 			shape.href = href;
 		}
 		return shape;
-		function parseHref ( el ) {
-			// Check for proper area
-			if (el & el.nodeName == "area" || el.nodeName == "AREA") {
-				if (el.href && el.href.length > 0) {
-					return el.href;
-				}
-			}
-		}
+
 
 		function getHeight () {
 			if (coordsList.length > 4) {
@@ -204,6 +230,14 @@
 			return coordsList[2] - coordsList[0];
 		};
 	}
+	function parseHref ( el ) {
+		// Check for proper area
+		if (el & el.nodeName == "area" || el.nodeName == "AREA") {
+			if (el.href && el.href.length > 0) {
+				return el.href;
+			}
+		}
+	}
 
 	function parseCoords ( el ) {
 		var shape = determineShape(el);
@@ -212,6 +246,7 @@
 				return parseRect(el);
 			case "circ":
 			case "poly":
+				return parsePolyCoords(el);
 		}
 	}
 

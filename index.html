@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title>Map to SVG Conversion Test</title>
+	<style type="text/css">
+		.map-container {
+			width: 600px;
+			height: 523px;
+			display: block;
+			float: left;
+			clear: both;
+			position: relative;
+		}
+
+		svg.mapped-svg {
+
+			position: absolute;
+			top:0;
+			left:0;
+
+		}
+		.mapped-svg polygon {
+			transition: fill 0.2s ease;
+		}
+		.mapped-svg polygon:hover {
+			fill: green
+		}
+	</style>
+</head>
+<body>
+<div id="main-outer-container">
+	<div class="container-cell cell-1"><h1>Map</h1>
+
+		<div class="map-container">
+			<map name="FPMap1" id="FPMap1" title="navigation">
+				<area href="/city/pages/yt-16_metric_e.html" title="Whitehorse" alt="Whitehorse" shape="poly"
+					  coords="66,233,57,233,56,223,39,223,39,212,53,212,53,198,60,170,95,170,95,198,67,202,67,212,95,212,95,226,67,223">
+				<area href="/forecast/canada/index_e.html?id=YT" title="Yukon" alt="Yukon" shape="poly"
+					  coords="99,128,26,208,112,265,112,251,102,247,99,230,99,194,106,184,102,177,106,173,102,167,102,163,113,146">
+
+				<area href="/city/pages/nt-24_metric_e.html" title="Yellowknife" alt="Yellowknife" shape="poly"
+					  coords="163,265,176,265,176,258,228,258,228,247,190,248,190,237,221,237,218,206,176,206,176,233,169,237">
+				<area href="/forecast/canada/index_e.html?id=NT" title="Northwest Territories"
+					  alt="Northwest Territories" shape="poly"
+					  coords="235,82,228,112,228,120,228,127,217,147,214,176,202,182,183,172,172,175,162,190,182,221,193,225,204,238,235,249,228,302,186,291,130,274,109,265,113,253,105,249,96,236,99,229,99,210,99,194,105,187,101,176,98,169,102,169,103,157,112,148,119,144,148,151,165,154,162,137,176,123,175,116,192,95,207,89,229,80">
+
+				<area href="/city/pages/nu-21_metric_e.html" title="Iqaluit" alt="Iqaluit" shape="poly"
+					  coords="393,234,396,241,407,241,404,233,421,233,421,219,393,219,393,212,410,206,407,178,375,177,375,209,365,213,369,223,385,227">
+				<area href="/forecast/canada/index_e.html?id=NU" title="Nunavut" alt="Nunavut" shape="poly"
+					  coords="232,252,225,248,218,245,209,242,199,239,198,235,193,228,187,227,177,214,162,189,168,172,185,173,210,180,218,149,231,80,294,32,305,25,316,23,320,24,324,27,327,28,322,55,316,107,318,140,326,139,337,151,353,156,368,161,379,174,414,189,415,202,413,212,418,237,417,250,353,256,349,274,368,333,362,346,365,374,353,374,353,371,353,330,268,300,250,300,238,299,227,298,230,277,231,261">
+				<area href="/city/pages/bc-74_metric_e.html" title="Vancouver" alt="Vancouver" shape="poly"
+					  coords="58,357,108,360,107,362,110,381,111,423,98,430,99,428,80,432,66,430">
+				<area href="/city/pages/bc-85_metric_e.html" title="Victoria" alt="Victoria" shape="poly"
+					  coords="7,367,56,370,55,372,60,389,58,433,46,440,48,438,28,442,14,440">
+				<area href="/city/pages/bc-79_metric_e.html" title="Prince George" alt="Prince George" shape="poly"
+					  coords="84,334,95,334,98,328,119,328,119,317,81,314,81,303,109,303,109,275,74,275,74,299,70,307,69,314,49,313,53,328">
+				<area href="/forecast/canada/index_e.html?id=BC" title="British Columbia" alt="British Columbia"
+					  shape="poly"
+					  coords="130,275,102,342,123,388,120,394,126,408,64,381,56,388,42,370,32,342,39,338,46,325,39,321,36,322,32,321,24,321,19,315,22,304,22,290,35,300,32,307,42,311,43,297,55,286,49,275,51,234,33,234,36,216">
+
+				<area href="/city/pages/ab-52_metric_e.html" title="Calgary" alt="Calgary" shape="poly"
+					  coords="130,377,127,384,116,384,116,394,134,395,134,408,140,415,141,437,179,440,179,405,151,405,147,398,155,395,158,384,140,384,140,377">
+				<area href="/city/pages/ab-50_metric_e.html" title="Edmonton" alt="Edmonton" shape="poly"
+					  coords="141,359,140,352,123,352,123,342,140,342,140,328,144,324,144,300,182,300,182,331,154,335,154,345,176,345,176,355,151,355">
+				<area href="/forecast/canada/index_e.html?id=AB" title="Alberta" alt="Alberta" shape="poly"
+					  coords="186,290,130,272,102,342,109,352,112,360,116,370,120,381,126,391,120,394,123,405,155,415">
+				<area href="/city/pages/sk-32_metric_e.html" title="Regina" alt="Regina" shape="poly"
+					  coords="179,390,179,415,183,447,224,447,224,415,202,415,204,401,211,401,211,390">
+				<area href="/city/pages/sk-40_metric_e.html" title="Saskatoon" alt="Saskatoon" shape="poly"
+					  coords="182,387,193,387,193,377,221,377,221,369,199,366,196,355,228,352,228,324,190,324,186,355,183,366,172,366,172,380,179,380">
+				<area href="/forecast/canada/index_e.html?id=SK" title="Saskatchewan" alt="Saskatchewan" shape="poly"
+					  coords="228,300,224,349,221,426,154,412,183,290">
+
+				<area href="/city/pages/mb-38_metric_e.html" title="Winnipeg" alt="Winnipeg" shape="poly"
+					  coords="245,415,245,411,259,411,260,418,274,418,274,432,259,432,259,439,280,439,280,468,252,471,246,447,241,440,241,429,228,429,228,415">
+				<area href="/forecast/canada/index_e.html?id=MB" title="Manitoba" alt="Manitoba" shape="poly"
+					  coords="228,300,224,342,221,423,266,426,266,381,305,338,291,329,284,331,277,314,270,315,270,303">
+
+				<area href="/city/pages/on-118_metric_e.html" title="Ottawa" alt="Ottawa" shape="poly"
+					  coords="417,445,428,445,431,453,442,453,442,463,427,463,427,474,462,474,462,508,420,508,417,480,414,463,405,463,405,449">
+				<area href="/city/pages/on-100_metric_e.html" title="Thunder Bay" alt="Thunder Bay" shape="poly"
+					  coords="304,437,318,437,319,430,361,430,361,416,333,416,333,406,360,405,360,374,325,374,319,405,318,419,298,416">
+				<area href="/city/pages/on-143_metric_e.html" title="Toronto" alt="Toronto" shape="poly"
+					  coords="354,465,354,479,358,493,358,517,392,518,392,482,402,482,402,465">
+				<area href="/forecast/canada/index_e.html?id=ON" title="Ontario" alt="Ontario" shape="poly"
+					  coords="305,337,266,382,263,424,295,438,315,438,319,427,333,435,343,438,350,452,372,459,375,480,371,497,385,490,402,483,399,473,413,469,438,449,428,442,414,452,410,445,396,442,385,431,378,389,361,382,368,372,351,368,351,350,333,351">
+
+				<area href="/city/pages/qc-133_metric_e.html" title="Québec City" alt="Québec City" shape="poly"
+					  coords="445,416,445,426,456,426,456,416,474,415,474,402,456,401,459,391,483,391,487,360,446,360,449,388,442,388,442,401,435,405,438,416">
+				<area href="/city/pages/qc-147_metric_e.html" title="Montréal" alt="Montréal" shape="poly"
+					  coords="445,447,432,447,432,439,414,439,414,432,399,429,399,419,407,415,404,390,442,387,442,415,417,422,424,429,438,429,462,429,446,440">
+				<area href="/forecast/canada/index_e.html?id=QC" title="Quebec" alt="Quebec" shape="poly"
+					  coords="432,441,426,442,418,445,411,445,405,442,399,440,393,440,389,439,383,432,383,426,373,387,375,383,379,383,377,376,373,368,370,359,366,350,364,350,370,344,377,340,378,334,378,325,375,317,371,312,366,307,361,306,360,300,363,295,364,288,358,280,358,275,358,271,353,266,355,262,361,260,367,260,372,260,375,258,377,256,381,259,387,261,390,264,396,265,402,266,404,274,408,281,412,286,418,287,423,287,427,285,429,279,432,276,430,270,429,265,429,260,433,268,437,274,441,274,443,280,444,283,448,285,450,294,455,302,461,309,462,317,453,317,449,319,442,318,438,321,440,325,442,333,448,336,449,342,456,342,460,348,468,348,474,348,474,343,471,336,474,343,490,336,510,325,518,322,518,326,515,332,510,339,507,347,503,367,497,368,493,370,490,382,486,390,479,390,471,396,467,397,465,402,464,408,458,414,458,424,458,432,454,436,453,440,428,448">
+
+				<area href="/city/pages/nl-24_metric_e.html" title="St John's" alt="St John's" shape="poly"
+					  coords="568,344,571,351,579,351,582,341,582,330,558,330,558,320,600,320,599,288,546,285,547,316,540,316,541,330,533,330,536,344">
+				<area href="/forecast/canada/index_e.html?id=NL" title="Newfoundland and Labrador"
+					  alt="Newfoundland and Labrador" shape="poly"
+					  coords="432,265,445,282,453,289,456,307,467,321,460,321,446,317,443,327,442,335,453,342,462,349,477,353,468,335,477,334,480,349,491,335,505,332,522,321,528,321,523,331,526,345,526,359,529,374,533,377,536,370,547,366,550,370,554,364,561,363,568,357,578,360,571,346,572,342,561,332,551,335,547,335,540,339,536,339,533,321,529,311,519,304,505,300,494,297,483,297,473,294,465,286,460,280,452,275,442,272">
+
+				<area href="/city/pages/nb-29_metric_e.html" title="Fredericton" alt="Fredericton" shape="poly"
+					  coords="495,415,495,408,480,405,480,415,462,412,460,421,462,429,465,443,467,457,467,471,508,471,505,443,491,440,480,439,480,429,498,426,512,426,509,415">
+				<area href="/forecast/canada/index_e.html?id=NB" title="New Brunswick" alt="New Brunswick" shape="poly"
+					  coords="506,404,504,407,503,409,501,411,500,414,497,417,494,421,491,424,488,426,483,426,480,423,477,419,474,416,474,412,473,407,470,405,467,407,465,408,465,402,467,398,471,396,476,394,477,391,483,391,486,391,489,391,490,390,491,396,493,397,496,399,498,401,499,403,503,404">
+
+				<area href="/city/pages/pe-5_metric_e.html" title="Charlottetown" alt="Charlottetown" shape="poly"
+					  coords="519,401,578,401,578,387,512,384,512,380,540,377,540,349,495,349,494,390,505,398,508,404,513,405">
+				<area href="/forecast/canada/index_e.html?id=PE" title="Prince Edward Island" alt="Prince Edward Island"
+					  shape="poly" coords="498,394,508,397,522,397,519,404,509,405,502,405">
+
+				<area href="/city/pages/ns-19_metric_e.html" title="Halifax" alt="Halifax" shape="poly"
+					  coords="512,411,522,412,557,415,557,426,547,429,550,439,582,439,582,471,540,471,540,443,533,440,533,429,522,425,512,425">
+				<area href="/forecast/canada/index_e.html?id=NS" title="Nova Scotia" alt="Nova Scotia" shape="poly"
+					  coords="522,401,522,383,530,387,536,398,530,405,526,415,519,422,515,422,512,433,512,440,501,439,498,433,498,426,498,419,501,409,508,405">
+			</map>
+			<img src="wocanmap0_e.jpg" id="map1" class="thumbnail center-block img-responsive wxo-pddng-sm"
+				 usemap="#FPMap1" alt="map of Canada">
+
+		</div>
+
+	</div>
+	<div class="container-cell">
+		<h1>SVG</h1>
+		<div class="map-container">
+			<img src="https://weather.gc.ca/data/wxoimages/wocanmap0_e.jpg"
+				 alt="Environment Canada Weather Map" usemap="#FPMap1" id="map2" width="600" height="523"/>
+		</div>
+
+	</div>
+</div>
+<script src="maptosvg.js"></script>
+<script type="text/javascript">
+	var svg1 = SVGM("map2");
+	var image1 = document.getElementById("map2");
+	image1.parentNode.appendChild(svg1);
+
+</script>
+</body>
+</html>
