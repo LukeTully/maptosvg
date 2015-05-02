@@ -11,8 +11,8 @@ At the moment, conversion is done by means of passing the id of your image—The
 This function returns an SVG element which can be added to the DOM in whatever manner you choose.
 
 ## Example
-'''
+```
 var svg1 = SVGM("map2");
 	var image1 = document.getElementById("map2");
 	image1.parentNode.appendChild(svg1);
-'''
+```
