@@ -25,7 +25,7 @@ QUnit.test("SVG Conversion", function ( assert ) {
 	assert.equal(newAnchor.tagName, "a");
 	assert.notEqual(newAnchor.href.baseVal, "http://www.google.com");
 	assert.equal(newAnchor.href.baseVal, "http://www.google.com/");
-	assert.equal(svg1.createSVGAnchor(testRectArea).href.baseVal, "http://www.google.com/")
+	assert.equal(svg1.createSVGAnchor(testRectArea).href.baseVal, "http://www.google.com/");
 
 	var testImage1 = document.createElement("img");
 	testImage1.setAttribute("id", "testimage1");
