@@ -40,8 +40,8 @@
 		window.SVGM = SVGM;
 	}
 
+	// @if NODE_ENV='development'
 	// BEGIN TESTING
-
 	SVGM.prototype.getAttributeValue = getAttributeValue;
 	SVGM.prototype.getMapFromImage = getMapFromImage;
 	SVGM.prototype.determineShape = determineShape;
@@ -49,8 +49,8 @@
 	SVGM.prototype.createSVGAnchor = createSVGAnchor;
 	SVGM.prototype.parseRect = parseRect;
 	SVGM.prototype.parseCoords = parseCoords;
-
 	// END TESTING
+	// @endif
 
 	// Accepts an element
 	function getAttributeValue ( e, a ) {
@@ -216,7 +216,6 @@
 		}
 		return shape;
 
-
 		function getHeight () {
 			if (coordsList.length > 4) {
 				throw "This is not a rectangle, it has " + coordsList.length + "vertices";
@@ -230,6 +229,7 @@
 			return coordsList[2] - coordsList[0];
 		};
 	}
+
 	function parseHref ( el ) {
 		// Check for proper area
 		if (el & el.nodeName == "area" || el.nodeName == "AREA") {
