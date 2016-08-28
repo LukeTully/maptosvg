@@ -112,9 +112,11 @@
 					newShape.setAttributeNS(null, "x", elList[i].x);
 					newShape.setAttributeNS(null, "y", elList[i].y);
 					newShape.classList.add("map-area-rect");
+					break;
 				case "poly":
 					newShape = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
 					newShape.setAttributeNS(null, "points", elList[i].points);
+					break;
 
 			}
 			svgAnchor = createSVGAnchor(elList[i]);
