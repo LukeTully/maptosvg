@@ -21,8 +21,6 @@
 			}
 
 			for (var i = 0; i < areaSet.length; i++) {
-
-				//TODO: Pull this piece of code out to modularize
 				mapDimSet.push(parseCoords(areaSet[i]));
 			}
 		}
